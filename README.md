@@ -143,26 +143,26 @@ The high-level features of the application can be summarized as follows:
     - GCP alternative: Firebase for auth, Firestore for database, AI Platform for ML models
     - CI/CD: GitHub Actions or GitLab CI
 
-  * Optional Advanced Features
+  * Optional Advanced Features:
     - Wearable Integration: Panic button on smartwatch or wearable devices.
     - Voice Activation: Trigger alert using voice commands.
     - Community Chatrooms: Localized safety discussion channels.
     - AI Image Analysis: Detect violence or fire in uploaded videos/photos.
     - Government Data Integration: Real-time access to police data feeds.
 
-##  -------------------- 🧠 Website Concept Overview ------------------------------------------ ##
+## 🧠 Website Concept Overview
 
-### Goal: To establish trust, security, and innovation — positioning SurakshyaAI as Nepal’s leading smart crime and emergency alert system.
+* Goal: To establish trust, security, and innovation — positioning SurakshyaAI as Nepal’s leading smart crime and emergency alert system.
 
-### Target Audience:
+* Target Audience:
   - Everyday users (citizens who want personal safety)
   - Law enforcement agencies
   - NGOs & local governments
   - Tech/media interested in AI-driven safety initiatives
 
-### Tone: Modern, reliable, human-centered, and tech-driven.
+* Tone: Modern, reliable, human-centered, and tech-driven.
 
-##  -------------------- 🧩 Website Structure (Pages & Design Ideas) ---------------------------- ##
+## 🧩 Website Structure (Pages & Design Ideas)
 
 ## 1. Home Page
 
@@ -255,7 +255,7 @@ Design:
   - Login with 2FA
   - Short tagline: “Authorized Access Only”
 
-##  -------------------- 🎨 Color Palette Suggestions ------------------------------------------ ##
+## 🎨 Color Palette Suggestions
 The color scheme must convey trust, safety, and intelligence.
 
 | Color | Purpose | Hex Code |
@@ -268,19 +268,16 @@ The color scheme must convey trust, safety, and intelligence.
 | White	| Clean base |	#FFFFFF
 | Black (80%)	| Text contrast	| #222222
 
-### Font Style:
+## Font Style:
+  - Headings: Poppins or Montserrat (modern, bold)
+  - Body: Inter or Open Sans
+  - Numbers: Roboto Mono (for dashboards)
 
-- Headings: Poppins or Montserrat (modern, bold)
+## UI Style Keywords:
+  🔹 Clean | 🔹 Minimal | 🔹 Map-integrated | 🔹 Futuristic accents | 🔹 Accessible
 
-- Body: Inter or Open Sans
-
-- Numbers: Roboto Mono (for dashboards)
-
-### UI Style Keywords:
-🔹 Clean | 🔹 Minimal | 🔹 Map-integrated | 🔹 Futuristic accents | 🔹 Accessible
-
-#  -------------------- 🧱 UI Design Concepts ------------------------------------------ ##
-1. Map-Focused Elements: Integrate a live map aesthetic throughout the site (animated dots or pulsing zones).
-2. AI Glow Effects: Subtle gradients around key interactive areas to emphasize “intelligence.”
-3. Glassmorphism Cards: Slight transparency for modern, elevated look.
-4. Micro-interactions: Button ripple effects, hover shadows, dynamic counters.
+## 🧱 UI Design Concepts
+  1. Map-Focused Elements: Integrate a live map aesthetic throughout the site (animated dots or pulsing zones).
+  2. AI Glow Effects: Subtle gradients around key interactive areas to emphasize “intelligence.”
+  3. Glassmorphism Cards: Slight transparency for modern, elevated look.
+  4. Micro-interactions: Button ripple effects, hover shadows, dynamic counters.
