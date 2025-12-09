@@ -1,180 +1,154 @@
 # SurakshaAI
 
-## ------------------------- Project Overview ---------------------------------------- ##
+## Project Overview
 SurakshyaAI is a mobile-first platform (Android & iOS) for Nepal aimed at improving personal and community safety using AI and real-time alerts. It integrates emergency notifications, crime reporting, location tracking, predictive analytics, and AI-based recommendations.
 
-## Target Users
+  ## Target Users
   - Individuals (commuters, students, workers)
   - Community Watch Groups
   - Local Police and Emergency Responders
 
-## Core Value
-Instant crime/emergency alert, real-time location sharing, predictive risk notifications, and safety guidance.
+  ## Core Value
+  Instant crime/emergency alert, real-time location sharing, predictive risk notifications, and safety guidance.
 
-##  -------------------- High-Level Features ------------------------------------------ ##
+## High-Level Features
 The high-level features of the application can be summarized as follows:
 
-## A. User Features::
-1. User Registration & Profile:
+  ## A. User Features
+  1. User Registration & Profile:
+    - Phone number/email verification
+    - Profile setup with emergency contacts
+    - Optional government ID verification for higher trust
 
-  - Phone number/email verification
-  - Profile setup with emergency contacts
-  - Optional government ID verification for higher trust
+  2. Real-Time Emergency Alerts:
+    - Panic button to alert authorities & emergency contacts
+    - Auto-detection of accidents (via smartphone sensors)
+    - Location sharing in real-time
+    - AI categorization of the emergency (crime, health, accident, fire, natural disaster)
 
-2. Real-Time Emergency Alerts:
+  3. Crime Reporting:
+    - Report crimes with type, location, description, images/videos
+    - AI-assisted detection of sensitive content or urgency
+    - Anonymous reporting option
+    - Crime status updates (investigation, solved, ongoing)
 
-  - Panic button to alert authorities & emergency contacts
-  - Auto-detection of accidents (via smartphone sensors)
-  - Location sharing in real-time
-  - AI categorization of the emergency (crime, health, accident, fire, natural disaster)
+  4. Community Safety Feed:
+    - Map-based display of recent incidents
+    - AI risk scoring for areas based on frequency of incidents
+    - Notifications for high-risk zones nearby
+    - Users can mark safe/unsafe areas
 
-3. Crime Reporting:
+  5. Predictive Safety Alerts (AI):
+    - Predict potential hotspots using historical crime data
+    - Suggest safer routes for commuting
+    - Personalized safety notifications based on behavior and location
 
-  - Report crimes with type, location, description, images/videos
-  - AI-assisted detection of sensitive content or urgency
-  - Anonymous reporting option
-  - Crime status updates (investigation, solved, ongoing)
+  6. Emergency Contacts & Communication:
+    - Auto call or SMS to saved emergency contacts
+    - In-app chat with nearby users during emergency
+    - Integration with local police and hospitals
 
-4. Community Safety Feed:
+  7. Safety Score & Gamification:
+    - Users get a safety score based on reporting and responsiveness
+    - Rewards or badges for active users who contribute to community safety
 
-  - Map-based display of recent incidents
-  - AI risk scoring for areas based on frequency of incidents
-  - Notifications for high-risk zones nearby
-  - Users can mark safe/unsafe areas
+  ## B. Admin / Authorities Features
+  1. Dashboard for Law Enforcement:
+    - Live incident feed with location, type, and severity
+    - AI suggestions for resource deployment
+    - Analytics for crime trends and patterns
+    - Emergency response coordination
 
-5. Predictive Safety Alerts (AI):
+  2. Verification & Content Moderation:
+    - Validate reports from users
+    - Handle false reports, spam, or misuse
+    - Analytics for trust scoring of users
 
-  - Predict potential hotspots using historical crime data
-  - Suggest safer routes for commuting
-  - Personalized safety notifications based on behavior and location
+  3. Government & NGO Integration:
+    - Share crime and safety data with municipal authorities
+    - Alerts for natural disasters or civil emergencies
 
-6. Emergency Contacts & Communication:
+  ## C. AI & ML Features
+  1. Crime Prediction Model:
+    - Uses historical data, time, location, and demographics to predict crime risk
+    - Helps notify users in advance
 
-  - Auto call or SMS to saved emergency contacts
-  - In-app chat with nearby users during emergency
-  - Integration with local police and hospitals
+  2. Incident Categorization:
+    - AI automatically tags report types
+    - Detects urgent situations (fire, medical, violent crime)
 
-7. Safety Score & Gamification:
+  3. Route Safety Optimization:
+    - Suggests safest route to destination based on past incidents
+    - Integrates with Google Maps or Mapbox
 
-  - Users get a safety score based on reporting and responsiveness
-  - Rewards or badges for active users who contribute to community safety
+  4. Anomaly Detection:
+    - Detects unusual patterns in reporting (e.g., spike in incidents in an area)
 
-## B. Admin / Authorities Features::
-1. Dashboard for Law Enforcement:
+  ## D. Tech & Platform Features
+    - Mobile-first (Android & iOS, using Flutter or React Native)
+    - Backend: Node.js + Express or Python + FastAPI
+    - Database: MongoDB (NoSQL for flexible reporting data)
+    - AI Models: Python (PyTorch or TensorFlow)
+    - Push Notifications: Firebase Cloud Messaging (FCM)
+    - Real-Time Location: WebSockets or MQTT
+    - Mapping: Mapbox / Google Maps API
+    - Cloud Hosting: AWS / GCP
 
-  - Live incident feed with location, type, and severity
-  - AI suggestions for resource deployment
-  - Analytics for crime trends and patterns
-  - Emergency response coordination
+## User Story Breakdown:
+  ### Epic 1: User Onboarding
+    US 1.1: As a user, I want to register with my phone/email so I can securely use the app.
+    US 1.2: As a user, I want to add emergency contacts so they can be notified during an emergency.
+    US 1.3: As a user, I want to verify my identity optionally to increase trust in the community.
 
-2. Verification & Content Moderation:
+  ### Epic 2: Emergency Alerts
+    US 2.1: As a user, I want to press a panic button to alert authorities and contacts immediately.
+    US 2.2: As a user, I want my location to be shared in real-time during emergencies.
+    US 2.3: As a user, I want AI to automatically categorize the type of emergency.
 
-  - Validate reports from users
-  - Handle false reports, spam, or misuse
-  - Analytics for trust scoring of users
+  ### Epic 3: Crime Reporting
+    US 3.1: As a user, I want to report a crime with details and photos/videos.
+    US 3.2: As a user, I want to report anonymously if I fear retaliation.
+    US 3.3: As a user, I want updates on my reported incident.
 
-3. Government & NGO Integration:
+  ### Epic 4: Safety Feed & Predictive Alerts
+    US 4.1: As a user, I want to see a map of recent incidents in my area.
+    US 4.2: As a user, I want AI to suggest safer routes based on crime trends.
+    US 4.3: As a user, I want notifications about high-risk zones near me.
 
-  - Share crime and safety data with municipal authorities
-  - Alerts for natural disasters or civil emergencies
+  ### Epic 5: Community & Gamification
+    US 5.1: As a user, I want to mark areas as safe or unsafe.
+    US 5.2: As a user, I want a safety score to see how active I am in the community.
+    US 5.3: As a user, I want badges/rewards for helping community safety.
 
-## C. AI & ML Features::
-1. Crime Prediction Model:
+  ### Epic 6: Admin & Law Enforcement
+    US 6.1: As an admin, I want a dashboard showing live incidents.
+    US 6.2: As an admin, I want analytics for crime trends.
+    US 6.3: As an admin, I want to verify or flag reports.
 
-  - Uses historical data, time, location, and demographics to predict crime risk
-  - Helps notify users in advance
+## System Architecture (High-Level)
+  ### Client Side:
+    - Flutter/React Native app (iOS & Android)
+    - Maps & real-time location
+    - Push notifications
 
-2. Incident Categorization:
+  ### Backend:
+    - API Layer: Node.js/Express or FastAPI
+    - Database: MongoDB (users, reports, AI logs)
+    - Real-Time Layer: WebSockets / MQTT for instant alerts
+    - AI Service: Python microservice for prediction and categorization
+    - Notification Service: FCM or OneSignal
 
-  - AI automatically tags report types
-  - Detects urgent situations (fire, medical, violent crime)
+  ### Cloud & Infrastructure:
+    - AWS: EC2/Lambda, S3 for media, DynamoDB or MongoDB Atlas
+    - GCP alternative: Firebase for auth, Firestore for database, AI Platform for ML models
+    - CI/CD: GitHub Actions or GitLab CI
 
-3. Route Safety Optimization:
-
-  - Suggests safest route to destination based on past incidents
-  - Integrates with Google Maps or Mapbox
-
-4. Anomaly Detection:
-
-  - Detects unusual patterns in reporting (e.g., spike in incidents in an area)
-
-## D. Tech & Platform Features::
-  - Mobile-first (Android & iOS, using Flutter or React Native)
-  - Backend: Node.js + Express or Python + FastAPI
-  - Database: MongoDB (NoSQL for flexible reporting data)
-  - AI Models: Python (PyTorch or TensorFlow)
-  - Push Notifications: Firebase Cloud Messaging (FCM)
-  - Real-Time Location: WebSockets or MQTT
-  - Mapping: Mapbox / Google Maps API
-  - Cloud Hosting: AWS / GCP
-
-##  -------------------- User Story Breakdown ------------------------------------------ ##
-
-### Epic 1: User Onboarding
-
-US 1.1: As a user, I want to register with my phone/email so I can securely use the app.
-US 1.2: As a user, I want to add emergency contacts so they can be notified during an emergency.
-US 1.3: As a user, I want to verify my identity optionally to increase trust in the community.
-
-### Epic 2: Emergency Alerts
-
-US 2.1: As a user, I want to press a panic button to alert authorities and contacts immediately.
-US 2.2: As a user, I want my location to be shared in real-time during emergencies.
-US 2.3: As a user, I want AI to automatically categorize the type of emergency.
-
-### Epic 3: Crime Reporting
-
-US 3.1: As a user, I want to report a crime with details and photos/videos.
-US 3.2: As a user, I want to report anonymously if I fear retaliation.
-US 3.3: As a user, I want updates on my reported incident.
-
-### Epic 4: Safety Feed & Predictive Alerts
-
-US 4.1: As a user, I want to see a map of recent incidents in my area.
-US 4.2: As a user, I want AI to suggest safer routes based on crime trends.
-US 4.3: As a user, I want notifications about high-risk zones near me.
-
-### Epic 5: Community & Gamification
-
-US 5.1: As a user, I want to mark areas as safe or unsafe.
-US 5.2: As a user, I want a safety score to see how active I am in the community.
-US 5.3: As a user, I want badges/rewards for helping community safety.
-
-### Epic 6: Admin & Law Enforcement
-
-US 6.1: As an admin, I want a dashboard showing live incidents.
-US 6.2: As an admin, I want analytics for crime trends.
-US 6.3: As an admin, I want to verify or flag reports.
-
-##  -------------------- System Architecture (High-Level) ------------------------------------- ##
-
-### Client Side:
-
-  - Flutter/React Native app (iOS & Android)
-  - Maps & real-time location
-  - Push notifications
-
-### Backend:
-
-  - API Layer: Node.js/Express or FastAPI
-  - Database: MongoDB (users, reports, AI logs)
-  - Real-Time Layer: WebSockets / MQTT for instant alerts
-  - AI Service: Python microservice for prediction and categorization
-  - Notification Service: FCM or OneSignal
-
-### Cloud & Infrastructure:
-
-  - AWS: EC2/Lambda, S3 for media, DynamoDB or MongoDB Atlas
-  - GCP alternative: Firebase for auth, Firestore for database, AI Platform for ML models
-  - CI/CD: GitHub Actions or GitLab CI
-
-##  ------------------------ Optional Advanced Features ------------------------------------------ ##
-
-  - Wearable Integration: Panic button on smartwatch or wearable devices.
-  - Voice Activation: Trigger alert using voice commands.
-  - Community Chatrooms: Localized safety discussion channels.
-  - AI Image Analysis: Detect violence or fire in uploaded videos/photos.
-  - Government Data Integration: Real-time access to police data feeds.
+  * Optional Advanced Features
+    - Wearable Integration: Panic button on smartwatch or wearable devices.
+    - Voice Activation: Trigger alert using voice commands.
+    - Community Chatrooms: Localized safety discussion channels.
+    - AI Image Analysis: Detect violence or fire in uploaded videos/photos.
+    - Government Data Integration: Real-time access to police data feeds.
 
 ##  -------------------- 🧠 Website Concept Overview ------------------------------------------ ##
 
