@@ -1,0 +1,966 @@
+{
+  "industries": [
+    {
+      "id": 1,
+      "category": "Agriculture, Forestry & Fishing",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Farming & Crop Production"
+        },
+        {
+          "id": 2,
+          "name": "Animal Husbandry / Livestock"
+        },
+        {
+          "id": 3,
+          "name": "Forestry & Logging"
+        },
+        {
+          "id": 4,
+          "name": "Fishing / Aquaculture"
+        },
+        {
+          "id": 5,
+          "name": "Support Activities for Agriculture & Forestry"
+        },
+        {
+          "id": 6,
+          "name": "Agricultural Equipment Manufacturing"
+        },
+        {
+          "id": 7,
+          "name": "Agricultural Chemicals"
+        },
+        {
+          "id": 8,
+          "name": "Seed Production"
+        },
+        {
+          "id": 9,
+          "name": "Irrigation Systems"
+        },
+        {
+          "id": 10,
+          "name": "Agricultural Consulting Services"
+        },
+        {
+          "id": 11,
+          "name": "Farm Management Services"
+        },
+        {
+          "id": 12,
+          "name": "Agricultural Research & Development"
+        },
+        {
+          "id": 13,
+          "name": "Organic Farming"
+        },
+        {
+          "id": 14,
+          "name": "Hydroponics / Aquaponics"
+        },
+        {
+          "id": 15,
+          "name": "Agri-tech / Precision Farming"
+        },
+        {
+          "id": 16,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Mining & Quarrying",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Surface Mining"
+        },
+        {
+          "id": 2,
+          "name": "Underground Mining"
+        },
+        {
+          "id": 3,
+          "name": "Drilling & Exploration"
+        },
+        {
+          "id": 4,
+          "name": "Support Services"
+        },
+        {
+          "id": 5,
+          "name": "Mineral Processing"
+        },
+        {
+          "id": 6,
+          "name": "Coal Mining"
+        },
+        {
+          "id": 7,
+          "name": "Metal Ore Mining"
+        },
+        {
+          "id": 8,
+          "name": "Oil & Gas Extraction"
+        },
+        {
+          "id": 9,
+          "name": "Non-metallic Mineral Mining"
+        },
+        {
+          "id": 10,
+          "name": "Other Mining Activities"
+        },
+        {
+          "id": 11,
+          "name": "Mining Equipment Manufacturing"
+        },
+        {
+          "id": 12,
+          "name": "Mining Consulting Services"
+        },
+        {
+          "id": 13,
+          "name": "Environmental Services for Mining"
+        },
+        {
+          "id": 14,
+          "name": "Mine Safety Services"
+        },
+        {
+          "id": 15,
+          "name": "Reclamation & Land Restoration"
+        },
+        {
+          "id": 16,
+          "name": "Mining Transportation & Logistics"
+        },
+        {
+          "id": 17,
+          "name": "Mining Software & Technology"
+        },
+        {
+          "id": 18,
+          "name": "Mining Training & Education"
+        },
+        {
+          "id": 19,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Manufacturing",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Food & Beverage Manufacturing"
+        },
+        {
+          "id": 2,
+          "name": "Textile & Apparel"
+        },
+        {
+          "id": 3,
+          "name": "Leather & Footwear"
+        },
+        {
+          "id": 4,
+          "name": "Wood & Furniture"
+        },
+        {
+          "id": 5,
+          "name": "Paper & Printing"
+        },
+        {
+          "id": 6,
+          "name": "Chemical & Pharmaceutical"
+        },
+        {
+          "id": 7,
+          "name": "Rubber & Plastic"
+        },
+        {
+          "id": 8,
+          "name": "Cement & Construction Materials"
+        },
+        {
+          "id": 9,
+          "name": "Metal & Machinery"
+        },
+        {
+          "id": 10,
+          "name": "Electronics & Electrical Equipment"
+        },
+        {
+          "id": 11,
+          "name": "Vehicle & Parts Manufacturing"
+        },
+        {
+          "id": 12,
+          "name": "Manufacturing Equipment & Machinery"
+        },
+        {
+          "id": 13,
+          "name": "Quality Control & Testing Services"
+        },
+        {
+          "id": 14,
+          "name": "Supply Chain & Logistics for Manufacturing"
+        },
+        {
+          "id": 15,
+          "name": "Manufacturing Software & Automation"
+        },
+        {
+          "id": 16,
+          "name": "Sustainability & Environmental Services"
+        },
+        {
+          "id": 17,
+          "name": "Manufacturing Training & Education"
+        },
+        {
+          "id": 18,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Energy & Utilities",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Electricity Generation & Distribution"
+        },
+        {
+          "id": 2,
+          "name": "Nuclear Energy"
+        },
+        {
+          "id": 3,
+          "name": "Wind Energy"
+        },
+        {
+          "id": 4,
+          "name": "Solar Energy"
+        },
+        {
+          "id": 5,
+          "name": "Hydropower"
+        },
+        {
+          "id": 7,
+          "name": "Oil & Gas Production"
+        },
+        {
+          "id": 8,
+          "name": "Petrochemicals"
+        },
+        {
+          "id": 9,
+          "name": "Other Renewable Energy Sources"
+        },
+        {
+          "id": 10,
+          "name": "Energy Trading & Brokerage"
+        },
+        {
+          "id": 11,
+          "name": "Energy Consulting Services"
+        },
+        {
+          "id": 12,
+          "name": "Energy Equipment Manufacturing"
+        },
+        {
+          "id": 13,
+          "name": "Energy Storage Solutions"
+        },
+        {
+          "id": 14,
+          "name": "Smart Grid Technologies"
+        },
+        {
+          "id": 15,
+          "name": "Energy Efficiency Services"
+        },
+        {
+          "id": 16,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Construction",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Residential Building Construction"
+        },
+        {
+          "id": 2,
+          "name": "Commercial / Industrial Construction"
+        },
+        {
+          "id": 3,
+          "name": "Civil Engineering (Roads, Bridges, Dams)"
+        },
+        {
+          "id": 4,
+          "name": "Real Estate Development"
+        },
+        {
+          "id": 5,
+          "name": "Building Contractors"
+        },
+        {
+          "id": 6,
+          "name": "Civil Engineering Contractors"
+        },
+        {
+          "id": 7,
+          "name": "Speciality Trade Contractors"
+        },
+        {
+          "id": 8,
+          "name": "Construction Materials Manufacturing"
+        },
+        {
+          "id": 9,
+          "name": "Construction Equipment Rental & Leasing"
+        },
+        {
+          "id": 10,
+          "name": "Architecture & Design Services"
+        },
+        {
+          "id": 11,
+          "name": "Construction Consulting Services"
+        },
+        {
+          "id": 12,
+          "name": "Project Management Services"
+        },
+        {
+          "id": 13,
+          "name": "Building Inspection & Testing Services"
+        },
+        {
+          "id": 14,
+          "name": "Sustainability & Green Building Services"
+        },
+        {
+          "id": 15,
+          "name": "Construction Training & Education"
+        },
+        {
+          "id": 16,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Wholesale & Retail Trade",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Retail Stores / Shops"
+        },
+        {
+          "id": 2,
+          "name": "Wholesale Trade"
+        },
+        {
+          "id": 3,
+          "name": "E-commerce"
+        },
+        {
+          "id": 4,
+          "name": "Supermarkets / Department Stores"
+        },
+        {
+          "id": 5,
+          "name": "Specialty Retailers"
+        },
+        {
+          "id": 6,
+          "name": "Franchising"
+        },
+        {
+          "id": 7,
+          "name": "Import / Export"
+        },
+        {
+          "id": 8,
+          "name": "Supply Chain & Inventory Management"
+        },
+        {
+          "id": 9,
+          "name": "Retail Consulting Services"
+        },
+        {
+          "id": 10,
+          "name": "Customer Service / Call Centers"
+        },
+        {
+          "id": 11,
+          "name": "Merchandising / Visual Display"
+        },
+        {
+          "id": 12,
+          "name": "Retail Technology Solutions"
+        },
+        {
+          "id": 13,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Transportation & Logistics",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Road Transport"
+        },
+        {
+          "id": 2,
+          "name": "Railways"
+        },
+        {
+          "id": 3,
+          "name": "Air Transport"
+        },
+        {
+          "id": 4,
+          "name": "Water Transport"
+        },
+        {
+          "id": 5,
+          "name": "Warehousing & Storage"
+        },
+        {
+          "id": 6,
+          "name": "Courier / Delivery Services"
+        },
+        {
+          "id": 7,
+          "name": "Freight Forwarding"
+        },
+        {
+          "id": 8,
+          "name": "Logistics & Supply Chain Management"
+        },
+        {
+          "id": 9,
+          "name": "Transportation Equipment Manufacturing"
+        },
+        {
+          "id": 10,
+          "name": "Transportation Consulting Services"
+        },
+        {
+          "id": 11,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Hospitality & Tourism",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Hotels / Resorts"
+        },
+        {
+          "id": 2,
+          "name": "Restaurants / Cafes"
+        },
+        {
+          "id": 3,
+          "name": "Travel Agencies / Tour Operators"
+        },
+        {
+          "id": 4,
+          "name": "Event Management"
+        },
+        {
+          "id": 5,
+          "name": "Transportation Services"
+        },
+        {
+          "id": 6,
+          "name": "Tourism Boards / Authorities"
+        },
+        {
+          "id": 7,
+          "name": "Hospitality Consulting Services"
+        },
+        {
+          "id": 8,
+          "name": "Catering Services"
+        },
+        {
+          "id": 9,
+          "name": "Recreational Facilities"
+        },
+        {
+          "id": 10,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Information & Communication Technology (ICT)",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Software Development / IT Services"
+        },
+        {
+          "id": 2,
+          "name": "Telecommunications"
+        },
+        {
+          "id": 3,
+          "name": "Internet / Web Services"
+        },
+        {
+          "id": 4,
+          "name": "Cybersecurity"
+        },
+        {
+          "id": 5,
+          "name": "AI / Data Science"
+        },
+        {
+          "id": 6,
+          "name": "Cloud Computing"
+        },
+        {
+          "id": 7,
+          "name": "IT Consulting Services"
+        },
+        {
+          "id": 8,
+          "name": "Hardware Manufacturing"
+        },
+        {
+          "id": 9,
+          "name": "Tech Support / Helpdesk"
+        },
+        {
+          "id": 10,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "Financial & Insurance Services",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Banking"
+        },
+        {
+          "id": 2,
+          "name": "Insurance"
+        },
+        {
+          "id": 3,
+          "name": "Investment / Securities"
+        },
+        {
+          "id": 4,
+          "name": "Accounting / Auditing"
+        },
+        {
+          "id": 5,
+          "name": "Fintech"
+        },
+        {
+          "id": 6,
+          "name": "Financial Advisory Services"
+        },
+        {
+          "id": 7,
+          "name": "Wealth Management"
+        },
+        {
+          "id": 8,
+          "name": "Credit / Loan Services"
+        },
+        {
+          "id": 9,
+          "name": "Risk Management"
+        },
+        {
+          "id": 10,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "Real Estate & Property",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Real Estate Agencies"
+        },
+        {
+          "id": 2,
+          "name": "Property Management"
+        },
+        {
+          "id": 3,
+          "name": "Rental & Leasing Services"
+        },
+        {
+          "id": 4,
+          "name": "Real Estate Development"
+        },
+        {
+          "id": 5,
+          "name": "Appraisal & Valuation Services"
+        },
+        {
+          "id": 6,
+          "name": "Real Estate Investment"
+        },
+        {
+          "id": 7,
+          "name": "Commercial Real Estate"
+        },
+        {
+          "id": 8,
+          "name": "Residential Real Estate"
+        },
+        {
+          "id": 9,
+          "name": "Real Estate Consulting Services"
+        },
+        {
+          "id": 10,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "Professional, Scientific & Technical Services",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Legal Services"
+        },
+        {
+          "id": 2,
+          "name": "Architectural / Engineering"
+        },
+        {
+          "id": 3,
+          "name": "Consulting"
+        },
+        {
+          "id": 4,
+          "name": "Advertising / Marketing"
+        },
+        {
+          "id": 5,
+          "name": "Research & Development"
+        },
+        {
+          "id": 6,
+          "name": "Design / Creative Services"
+        },
+        {
+          "id": 7,
+          "name": "Scientific Services"
+        },
+        {
+          "id": 8,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "category": "Public Administration & Government",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Local Government"
+        },
+        {
+          "id": 2,
+          "name": "Central Government"
+        },
+        {
+          "id": 3,
+          "name": "Public Safety / Law Enforcement"
+        },
+        {
+          "id": 4,
+          "name": "Defense / Military"
+        },
+        {
+          "id": 5,
+          "name": "Regulatory Agencies"
+        },
+        {
+          "id": 6,
+          "name": "Public Policy / Administration"
+        },
+        {
+          "id": 7,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "category": "Education & Training",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Schools / Colleges / Universities"
+        },
+        {
+          "id": 2,
+          "name": "Vocational Training"
+        },
+        {
+          "id": 3,
+          "name": "Tutoring / Coaching"
+        },
+        {
+          "id": 4,
+          "name": "Educational Administration"
+        },
+        {
+          "id": 5,
+          "name": "E-learning / Educational Technology"
+        },
+        {
+          "id": 6,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "category": "Health & Social Work",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Hospitals / Clinics"
+        },
+        {
+          "id": 2,
+          "name": "Nursing / Elderly Care"
+        },
+        {
+          "id": 3,
+          "name": "Pharmaceuticals"
+        },
+        {
+          "id": 4,
+          "name": "Public Health"
+        },
+        {
+          "id": 5,
+          "name": "NGOs / Social Work"
+        },
+        {
+          "id": 6,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "Arts, Entertainment & Media",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Film / TV / Radio"
+        },
+        {
+          "id": 2,
+          "name": "Music / Performing Arts"
+        },
+        {
+          "id": 3,
+          "name": "Journalism / Publishing"
+        },
+        {
+          "id": 4,
+          "name": "Graphic Design / Animation"
+        },
+        {
+          "id": 5,
+          "name": "Gaming / Esports"
+        },
+        {
+          "id": 6,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "category": "Sports & Recreation",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Sports Teams / Coaching"
+        },
+        {
+          "id": 2,
+          "name": "Gyms / Fitness Centers"
+        },
+        {
+          "id": 3,
+          "name": "Outdoor Adventure / Recreation"
+        },
+        {
+          "id": 4,
+          "name": "Sports Management / Marketing"
+        },
+        {
+          "id": 5,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "category": "Nonprofit & Community Services",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "NGOs / INGOs"
+        },
+        {
+          "id": 2,
+          "name": "Charitable Organizations"
+        },
+        {
+          "id": 3,
+          "name": "Religious Institutions"
+        },
+        {
+          "id": 4,
+          "name": "Community Development"
+        },
+        {
+          "id": 5,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "category": "Security & Defense",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Private Security"
+        },
+        {
+          "id": 2,
+          "name": "Police / Military"
+        },
+        {
+          "id": 3,
+          "name": "Emergency Services"
+        },
+        {
+          "id": 4,
+          "name": "Cybersecurity"
+        },
+        {
+          "id": 5,
+          "name": "Defense Contracting"
+        },
+        {
+          "id": 6,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "category": "Other Services",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Beauty / Personal Care"
+        },
+        {
+          "id": 2,
+          "name": "Repair & Maintenance"
+        },
+        {
+          "id": 3,
+          "name": "Domestic Services"
+        },
+        {
+          "id": 4,
+          "name": "Waste Management"
+        },
+        {
+          "id": 5,
+          "name": "Funeral Services"
+        },
+        {
+          "id": 6,
+          "name": "Other Related Services(please specify)"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "category": "Miscellaneous / Others",
+      "subIndustries": [
+        {
+          "id": 1,
+          "name": "Student"
+        },
+        {
+          "id": 2,
+          "name": "Unemployed"
+        },
+        {
+          "id": 3,
+          "name": "Homemaker"
+        },
+        {
+          "id": 4,
+          "name": "Retired"
+        },
+        {
+          "id": 5,
+          "name": "Freelancer / Self-employed"
+        },
+        {
+          "id": 6,
+          "name": "Other (please specify)"
+        }
+      ]
+    }
+  ]
+}

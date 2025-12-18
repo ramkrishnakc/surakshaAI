@@ -1,0 +1,82 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
+
+import { EMAIL_REGEXP, USERNAME_REGEXP } from 'src/common/constants';
+import { UserRoles, UserStatuses } from 'src/common/constants/enums';
+import { MSG } from 'src/common/constants/messages';
+import { validateEmail } from 'src/common/utils';
+
+@Schema({ timestamps: true })
+export class User {
+  // username
+  @Prop({
+    required: [true, MSG.isRequired('Username')],
+    unique: [true, MSG.alreadyInUse('Username')],
+    match: [USERNAME_REGEXP, MSG.invalid_username],
+    trim: true,
+  })
+  username: string;
+
+  // user email address
+  @Prop({
+    required: [true, MSG.isRequired('Email')],
+    unique: [true, MSG.alreadyInUse('Email')],
+    validate: [validateEmail, MSG.invalid_email],
+    match: [EMAIL_REGEXP, MSG.invalid_email],
+    trim: true,
+    lowercase: true,
+  })
+  email: string;
+
+  // user phone number
+  @Prop({
+    required: [true, MSG.isRequired('Phone number')],
+    unique: [true, MSG.alreadyInUse('Phone number')],
+    trim: true,
+  })
+  phone: string;
+
+  // user password (hashed)
+  @Prop({
+    required: [true, MSG.isRequired('Pasword')],
+    trim: true,
+  })
+  password: string;
+  @Prop({
+    required: [true, MSG.isRequired('Encryption Salt')],
+    trim: true,
+  })
+  encryptionKey: string;
+
+  // role of the user
+  @Prop({
+    enum: {
+      values: Object.values(UserRoles),
+      message: 'Invalid role',
+    },
+    default: UserRoles.USER,
+  })
+  role: string;
+
+  // is email verified
+  @Prop({ default: false })
+  emailVerified?: boolean;
+
+  // is phone number verified
+  @Prop({ default: false })
+  phoneVerified?: boolean;
+
+  // user account status
+  @Prop({
+    enum: {
+      values: Object.values(UserStatuses),
+      message: 'Invalid user status',
+    },
+    default: UserStatuses.ACTIVE,
+    trim: true,
+  })
+  status?: string;
+}
+
+export type UserDocument = HydratedDocument<User>;
+export const UserSchema = SchemaFactory.createForClass(User);
