@@ -1,6 +1,25 @@
 export const LOG_CTXT = {
-  REDIS: 'REDIS',
+  APP: 'APP',
   AUTH: 'AUTH',
+  FILE: 'FILE',
+  HTTP_ERR: 'HTTP_ERR',
+  REDIS: 'REDIS',
+  UNEXPECTED_ERR: 'UNEXPECTED_ERR',
+};
+
+export const METADATA_KEYS = {
+  ROLES: 'roles',
+  IS_PUBLIC: 'isPublic',
+  ALLOW_ADMIN: 'allowAdmin',
+};
+
+// These are the exact keys used for uploading files
+export const FILE_UPLOAD_KEYS = {
+  PROFILE: 'profile',
+  CITIZENSHIP: 'citizenship_proof',
+  NATIONAL_ID: 'national_id_proof',
+  LICENSE: 'license_proof',
+  PASSPORT: 'passport_proof',
 };
 
 // eslint-disable-next-line no-useless-escape
@@ -10,11 +29,9 @@ export const PASS_REGEXP = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[#?!@$%^&*-]
 // 5 to 12 chars long with numbers, alphabets and '_' or '@' only
 export const USERNAME_REGEXP =
   /^[a-zA-Z](?=(?:[^0-9]*[0-9]){0,2}[^0-9]*$)(?=(?:[^_@]*[_@]){0,1}[^_@]*$)[a-zA-Z0-9@_]{4,11}$/; // nosonarjs
+// 6 to 150 chars with alphabet & space only
+export const FULLNAME_REGEXP = /^[a-zA-Z ]{6,150}$/;
 
-export const PASSWORD_SALT_ROUNDS = 10;
-export const JWT_SECRET_KEY = 'your_jwt_secret_key';
-export const JWT_EXPIRATION_TIME = '3600s'; // 1 hour
-export const MONGODB_CONNECTION_STRING = 'mongodb://localhost:27017/petopia';
 export const SERVER_PORT = 3000;
 export const API_PREFIX = 'api/v1';
 export const MAX_LOGIN_ATTEMPTS = 5;
@@ -35,7 +52,6 @@ export const LOG_LEVEL = 'info';
 export const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 export const RATE_LIMIT_MAX_REQUESTS = 100; // max requests per window per IP
 export const CORS_ALLOWED_ORIGINS = ['http://localhost:3000'];
-export const SALT_ROUNDS = 10; // for password hashing
 export const TOKEN_TYPE = {
   ACCESS: 'access',
   REFRESH: 'refresh',
@@ -44,8 +60,7 @@ export const TOKEN_EXPIRATION = {
   ACCESS: '1h',
   REFRESH: '7d',
 };
-export const USERNAME_POLICY = {
-  MIN_LENGTH: 5,
-  MAX_LENGTH: 20,
-  REGEXP: '',
+export const DOB_VALIDATION = {
+  MIN: 16,
+  MAX: 90,
 };

@@ -1,9 +1,10 @@
-import { Model, MongooseError, Types } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { Injectable, OnModuleInit, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { isEmpty } from 'lodash';
 
 import { User, UserDocument } from './entities/user.schema';
-import { UserToken, UserTokenDocument } from './entities/usertoken.schema';
+import { UserToken, UserTokenDocument } from './entities/user_token.schema';
 import * as dto from './dto/user.dto';
 import { Encryption } from 'src/core/encryption';
 import { CustomLoggerService } from 'src/core/logger/logger.service';
@@ -53,12 +54,10 @@ export class UserService implements OnModuleInit {
 
   // Create user
   async createUser(data: dto.CreateUserDto): Promise<dto.UserResponseDto> {
-    if (!validateUsername(data.username)) {
-      throw new Error(MSG.invalid_username);
-    }
-    if (!validatePassword(data.password)) {
-      throw new Error(MSG.invalid_pwd);
-    }
+    if (!validateUsername(data.username)) throw new Error(MSG.invalid('Username'));
+
+    if (!validatePassword(data.password)) throw new Error(MSG.invalid('Password'));
+
     validateUserEmail(data);
     validatePhoneNumber(data);
 
@@ -66,98 +65,89 @@ export class UserService implements OnModuleInit {
     return getUserResponse(result);
   }
 
-  async findAll(): Promise<dto.UserResponseDto[]> {
-    const results = await this.UserModel.find({ role: UserRoles.USER }).exec();
-    return results.map(getUserResponse);
+  async prepareUpdateData(
+    user: UserDocument,
+    data: dto.UpdateUserDto,
+  ): Promise<Partial<UserDocument>> {
+    const newData: Partial<UserDocument> = {};
+
+    switch (data.updateUseCase) {
+      case UserUpdateCases.PWD: {
+        if (!data.oldPassword || !data.newPassword) throw new Error(MSG.old_new_pwd_required);
+
+        if (!validatePassword(data.newPassword)) throw new Error(MSG.invalid('Password'));
+
+        const decryptedPwd = Encryption.decrypt(user.password, user.encryptionKey);
+        if (decryptedPwd !== data.oldPassword) throw new Error(MSG.incorrect_old_pwd);
+
+        const { pwd: newEncryptedPwd, encKey: newEncKey } = await Encryption.encrypt(
+          data.newPassword,
+        );
+
+        newData.password = newEncryptedPwd;
+        newData.encryptionKey = newEncKey;
+        break;
+      }
+
+      case UserUpdateCases.EMAIL: {
+        if (validateUserEmail(data, user, true)) {
+          newData.email = data.email;
+          newData.emailVerified = false;
+        }
+        break;
+      }
+
+      case UserUpdateCases.PHONE: {
+        if (validatePhoneNumber(data, user, true)) {
+          newData.phone = data.phone;
+          newData.phoneVerified = false;
+        }
+        break;
+      }
+
+      default:
+        throw new Error('Invalid update case');
+    }
+    return newData;
   }
 
-  // async findOne(id: string): Promise<dtos.UserResponseDto> {
-  //   const result = await this.UserModel.findById(id).exec();
-  //   if (!result) throw new Error(MSG.user_not_found);
+  async update(id: Types.ObjectId, data: dto.UpdateUserDto): Promise<{ message: string }> {
+    const user = await this.UserModel.findById(id).exec();
+    if (!user) throw new Error(`Couldn't update: ${MSG.user_not_found}`);
 
-  //   return getUserResponse(result as unknown as UserDocument);
-  // }
+    const newData: Partial<UserDocument> = await this.prepareUpdateData(user, data);
+    if (!isEmpty(newData)) {
+      await this.UserModel.findByIdAndUpdate(id, newData, { projection: { _id: true } }).exec();
+    }
+    return { message: `${data.updateUseCase} successful` };
+  }
 
-  // async prepareUpdateData(
-  //   user: UserDocument,
-  //   data: dtos.UpdateUserDto,
-  // ): Promise<Partial<UserDocument>> {
-  //   const newData: Partial<UserDocument> = {};
+  async delete(id: Types.ObjectId): Promise<{ message: string }> {
+    const result = await this.UserModel.findByIdAndUpdate(
+      id,
+      {
+        isActive: false,
+      },
+      {
+        projection: { _id: true },
+      },
+    ).exec();
+    if (!result) throw new Error(`Couldn't remove: ${MSG.user_not_found}`);
 
-  //   switch (data.updateUseCase) {
-  //     case UserUpdateCases.PWD: {
-  //       if (!data.oldPassword || !data.newPassword) throw new Error(MSG.old_new_pwd_required);
+    // when user is removed, it should be logged out of the system
+    await this.logout(id);
 
-  //       const decryptedPwd = Encryption.decrypt(user.password, user.encryptionKey);
-  //       if (decryptedPwd !== data.oldPassword) throw new Error(MSG.incorrect_old_pwd);
-
-  //       const { pwd: newEncryptedPwd, encKey: newEncKey } = await Encryption.encrypt(
-  //         data.newPassword,
-  //       );
-
-  //       newData.password = newEncryptedPwd;
-  //       newData.encryptionKey = newEncKey;
-  //       break;
-  //     }
-
-  //     case UserUpdateCases.EMAIL: {
-  //       if (validateUserEmail(data, user, true)) {
-  //         newData.email = data.email;
-  //         newData.emailVerified = false;
-  //       }
-  //       break;
-  //     }
-
-  //     case UserUpdateCases.PHONE: {
-  //       if (validatePhoneNumber(data, user, true)) {
-  //         newData.phone = data.phone;
-  //         newData.internationalFormat = data.internationalFormat;
-  //         newData.countryCode = data.countryCode;
-  //         newData.phoneVerified = false;
-  //       }
-  //       break;
-  //     }
-
-  //     case UserUpdateCases.INFO: {
-  //       if (data.name && data.name !== user.name) newData.name = data.name;
-  //       if (data.dateOfBirth && data.dateOfBirth !== user.dateOfBirth)
-  //         newData.dateOfBirth = data.dateOfBirth;
-  //       break;
-  //     }
-
-  //     default:
-  //       throw new Error('Invalid update case');
-  //   }
-
-  //   return newData;
-  // }
-
-  // async update(id: string, data: dtos.UpdateUserDto): Promise<dtos.UserResponseDto> {
-  //   const user = await this.UserModel.findById(id).exec();
-  //   if (!user) throw new Error(`Couldn't update: ${MSG.user_not_found}`);
-
-  //   const newData: Partial<UserDocument> = await this.prepareUpdateData(user, data);
-  //   if (isEmpty(newData)) return getUserResponse(user as unknown as UserDocument);
-
-  //   const obj = await this.UserModel.findByIdAndUpdate(id, newData).exec();
-  //   return { ...getUserResponse(obj as unknown as UserDocument), ...newData };
-  // }
-
-  // async delete(id: string): Promise<{ message: string }> {
-  //   const result = await this.UserModel.findByIdAndUpdate(id, {
-  //     isActive: false,
-  //   }).exec();
-  //   if (!result) throw new Error(`Couldn't remove: ${MSG.user_not_found}`);
-
-  //   return { message: 'User removed successfully' };
-  // }
+    return { message: 'User removed successfully' };
+  }
 
   async login(username: string, password: string): Promise<dto.UserResponseDto> {
-    const user = await this.UserModel.findOne({ username }).exec();
+    const user = await this.UserModel.findOne({ username, isActive: true }).exec();
     if (!user) throw new Error(MSG.user_not_found);
 
     const decryptedPwd = Encryption.decrypt(user.password, user.encryptionKey);
-    if (decryptedPwd !== password) throw new UnauthorizedException(MSG.invalid_credentials);
+    if (decryptedPwd !== password) {
+      throw new UnauthorizedException(MSG.invalid('username & password'));
+    }
 
     return getUserResponse(user);
   }
@@ -169,7 +159,7 @@ export class UserService implements OnModuleInit {
     return await this.UserTokenModel.findOneAndUpdate(
       { userId: new Types.ObjectId(userId) },
       { refreshToken, lastLoginAt: new Date() },
-      { upsert: true },
+      { upsert: true, projection: { _id: true } },
     ).exec();
   }
 
@@ -177,10 +167,15 @@ export class UserService implements OnModuleInit {
     userId: Types.ObjectId,
     refreshToken: string,
   ): Promise<dto.UserResponseDto> {
-    const tokenInfo = await this.UserTokenModel.findOne({
-      userId: new Types.ObjectId(userId),
-      refreshToken,
-    }).exec();
+    const tokenInfo = await this.UserTokenModel.findOne(
+      {
+        userId: new Types.ObjectId(userId),
+        refreshToken,
+      },
+      {
+        _id: true,
+      },
+    ).exec();
     if (!tokenInfo) {
       throw new UnauthorizedException('Invalid refresh token. Authentication required.');
     }
@@ -195,6 +190,7 @@ export class UserService implements OnModuleInit {
     return await this.UserTokenModel.findOneAndUpdate(
       { userId: new Types.ObjectId(userId) },
       { refreshToken: '', lastLogoutAt: new Date() },
+      { projection: { _id: true } },
     ).exec();
   }
 }

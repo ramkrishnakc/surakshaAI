@@ -1,13 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
 
-import { MaritalStatuses } from 'src/common/constants/enums';
+import { GenderTypes, MaritalStatuses } from 'src/common/constants/enums';
 import { MSG } from 'src/common/constants/messages';
-import { EmergencyContact } from './nested-schema/e_contact';
+import { EmergencyContact } from './nested-schema/emergency_contact';
 import { MedicalInfo } from './nested-schema/medical_info';
 import { Address } from './nested-schema/address';
 import { GovtDoc } from './nested-schema/govt_doc';
 import { Occupation } from './nested-schema/occupation';
+import { FULLNAME_REGEXP } from 'src/common/constants';
 
 @Schema({ timestamps: true })
 export class UserInfo {
@@ -16,8 +17,36 @@ export class UserInfo {
   userId: Types.ObjectId;
 
   // user full name
-  @Prop({ required: [true, MSG.isRequired('Name')], trim: true })
-  fullName: string;
+  @Prop({
+    required: [true, MSG.isRequired('Name')],
+    trim: true,
+    match: [FULLNAME_REGEXP, MSG.invalid('Fullname')],
+  })
+  fullname: string;
+
+  // date of birth
+  @Prop({ trim: true })
+  dateOfBirth?: Date;
+
+  // Marital status of the user
+  @Prop({
+    enum: {
+      values: Object.values(GenderTypes),
+      message: 'Invalid gender types',
+    },
+    trim: true,
+  })
+  gender?: string;
+
+  // Marital status of the user
+  @Prop({
+    enum: {
+      values: Object.values(MaritalStatuses),
+      message: 'Invalid verification status',
+    },
+    trim: true,
+  })
+  maritalStatus?: string;
 
   // user permanent address
   @Prop({ type: Address, required: [true, MSG.isRequired('Permanent Address')] })
@@ -31,35 +60,36 @@ export class UserInfo {
   @Prop({ default: false })
   isSameAddress?: boolean;
 
-  // date of birth
-  @Prop({ trim: true })
-  dateOfBirth?: Date;
-
   // list of emergency contacts
-  @Prop({ type: [EmergencyContact], default: [] })
+  @Prop({
+    type: [EmergencyContact],
+    validate: {
+      validator: v => {
+        return Array.isArray(v) && v.length <= 2;
+      },
+      message: 'Max 2 emergency contacts allowed',
+    },
+  })
   emergencyContacts?: EmergencyContact[];
 
   // medical conditions/allergies info
   @Prop({ type: MedicalInfo })
   medicalInfo?: MedicalInfo;
 
-  // Marital status of the user
-  @Prop({
-    enum: {
-      values: Object.values(MaritalStatuses),
-      message: 'Invalid verification status',
-    },
-    default: MaritalStatuses.SINGLE,
-    trim: true,
-  })
-  maritalStatus?: string;
-
   // Occupation of the user
   @Prop({ trim: true })
   occupation?: Occupation;
 
   // List of government IDs/documents
-  @Prop({ type: [GovtDoc], default: [] })
+  @Prop({
+    type: [GovtDoc],
+    validate: {
+      validator: v => {
+        return Array.isArray(v) && v.length <= 2;
+      },
+      message: 'Max 2 government documents allowed',
+    },
+  })
   govtDocs?: GovtDoc[];
 
   // URLs of profile image and documents

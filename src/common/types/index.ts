@@ -3,8 +3,8 @@ import { AccessTokenPayloadDto } from 'src/core/auth/auth.dto';
 
 export interface IRequest<
   TParams = Record<string, string>,
-  TBody = any,
-  TQuery = any,
+  TBody = Record<string, string>,
+  TQuery = Record<string, string>,
 > extends Request<TParams, unknown, TBody, TQuery> {
   user: AccessTokenPayloadDto;
 }

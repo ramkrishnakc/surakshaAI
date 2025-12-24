@@ -13,7 +13,6 @@ export enum RelationshipTypes {
 }
 
 export enum VerificationStatuses {
-  NONE = 'none',
   PENDING = 'pending',
   VERIFIED = 'verified',
   REJECTED = 'rejected',
@@ -24,6 +23,17 @@ export enum MaritalStatuses {
   MARRIED = 'married',
   DIVORCED = 'divorced',
   WIDOWED = 'widowed',
+}
+
+export enum GenderTypes {
+  MALE = 'male',
+  FEMALE = 'female',
+  OTHER = 'others',
+}
+
+export enum ContactTypes {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
 }
 
 export enum DocumentTypes {
@@ -53,7 +63,6 @@ export enum TokenTypes {
 
 export enum UserUpdateCases {
   PWD = 'password_update',
-  INFO = 'user_info_update',
   EMAIL = 'email_update',
   PHONE = 'phone_update',
   EMAIL_VERIFY = 'email_verify',
@@ -81,20 +90,6 @@ export enum AuditLogActions {
 export enum AuditLogStatuses {
   SUCCESS = 'success',
   FAILURE = 'failure',
-}
-
-/*
-  There are 4 poosible status for a user account:
-  1. Active: User is active, hasn't violated any policy
-  2. Suspended: Violated the policy, can recover the account
-  3. Deactivated: User deactivated it for time being or system deactivated it after 1 month of no login
-  4. Deleted: User account is deleted, can't be recovered
-*/
-export enum UserStatuses {
-  ACTIVE = 'active',
-  SUSPENDED = 'suspended',
-  DEACTIVATED = 'deactivated',
-  DELETED = 'deleted',
 }
 
 export enum DeploymentEnvironments {

@@ -1,13 +1,16 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { StringValue } from 'ms';
+
 import { UserService } from 'src/modules/user/user.service';
 import * as dto from './auth.dto';
 import { RedisService } from '../redis/redis.service';
 import { REDIS_KEYS, REDIS_TTL } from '../redis/redis.constants';
 import { CustomLoggerService } from '../logger/logger.service';
-import { LOG_CTXT } from 'src/common/constants';
+import { LOG_CTXT, TOKEN_EXPIRATION } from 'src/common/constants';
 import { UserRoles } from 'src/common/constants/enums';
 import { UserResponseDto } from 'src/modules/user/dto/user.dto';
+import { MSG } from 'src/common/constants/messages';
 
 const ctxt = LOG_CTXT.AUTH;
 
@@ -26,7 +29,7 @@ export class AuthService {
       this.jwt.signAsync(payload, {
         algorithm: 'HS256',
         secret: process.env.ACCESS_SECRET,
-        expiresIn: '5m',
+        expiresIn: TOKEN_EXPIRATION.ACCESS as unknown as StringValue,
       }),
       this.jwt.signAsync(
         {
@@ -37,7 +40,7 @@ export class AuthService {
         {
           algorithm: 'HS256',
           secret: process.env.REFRESH_SECRET,
-          expiresIn: '7d',
+          expiresIn: TOKEN_EXPIRATION.REFRESH as unknown as StringValue,
         },
       ),
     ]);
@@ -60,7 +63,7 @@ export class AuthService {
       payload = this.jwt.verify(token, { secret: process.env.REFRESH_SECRET });
     } catch {
       // If verification fails (e.g., token expired or invalid signature)
-      throw new UnauthorizedException('Invalid or expired refresh token. Please log in again.');
+      throw new UnauthorizedException(MSG.invalid_refresh_token);
     }
 
     // Validate the user & it's refresh token in database
@@ -70,6 +73,10 @@ export class AuthService {
   }
 
   async login(data: dto.LoginDto): Promise<dto.TokenResponseDto> {
+    if (!data.username || !data.password) {
+      throw new BadRequestException(MSG.invalid('username and password'));
+    }
+
     const user = await this.userService.login(data.username, data.password);
     if (!user) throw new UnauthorizedException();
 
@@ -79,7 +86,6 @@ export class AuthService {
       role: user.role,
       emailVerified: user.emailVerified,
       phoneVerified: user.phoneVerified,
-      status: user.status,
     };
 
     this.logger.log(`Login successful. User: '${data.username}', Role: '${user.role}'`, ctxt);

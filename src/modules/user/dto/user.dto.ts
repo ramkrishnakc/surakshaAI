@@ -46,22 +46,13 @@ export class CreateAdminDto extends UserDto {
 
 export class UpdateUserDto {
   @IsOptional()
-  readonly name?: string;
+  readonly username?: string;
 
   @IsOptional()
   readonly email?: string;
 
   @IsOptional()
   readonly phone?: string;
-
-  @IsOptional()
-  readonly internationalFormat?: string;
-
-  @IsOptional()
-  readonly countryCode?: string;
-
-  @IsOptional()
-  readonly dateOfBirth?: Date;
 
   @IsOptional()
   readonly oldPassword?: string;
@@ -115,7 +106,7 @@ export class UserResponseDto {
   @IsOptional()
   readonly lastLoginAt?: Date;
 
-  @IsString()
+  @IsBoolean()
   @IsOptional()
-  readonly status?: string;
+  readonly isActive?: boolean;
 }

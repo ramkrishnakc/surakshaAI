@@ -13,7 +13,7 @@ export class ContactInfo {
     default: PhoneTypes.MOBILE,
     trim: true,
   })
-  contactType: string;
+  phoneType: string;
 
   @Prop({ required: [true, MSG.isRequired('Phone number')], trim: true })
   phone: string;

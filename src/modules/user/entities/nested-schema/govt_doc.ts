@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { DocumentTypes, VerificationStatuses } from 'src/common/constants/enums';
 
-@Schema({ _id: true })
+@Schema({ _id: false })
 export class GovtDoc {
   @Prop({
     enum: {
@@ -21,7 +21,7 @@ export class GovtDoc {
       values: Object.values(VerificationStatuses),
       message: 'Invalid verification status',
     },
-    default: VerificationStatuses.NONE,
+    default: VerificationStatuses.PENDING,
     trim: true,
   })
   status?: string;

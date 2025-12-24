@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 import { EMAIL_REGEXP, USERNAME_REGEXP } from 'src/common/constants';
-import { UserRoles, UserStatuses } from 'src/common/constants/enums';
+import { UserRoles } from 'src/common/constants/enums';
 import { MSG } from 'src/common/constants/messages';
 import { validateEmail } from 'src/common/utils';
 
@@ -11,8 +11,11 @@ export class User {
   // username
   @Prop({
     required: [true, MSG.isRequired('Username')],
-    unique: [true, MSG.alreadyInUse('Username')],
-    match: [USERNAME_REGEXP, MSG.invalid_username],
+    index: {
+      unique: true,
+      partialFilterExpression: { isActive: true },
+    },
+    match: [USERNAME_REGEXP, MSG.invalid('Username')],
     trim: true,
   })
   username: string;
@@ -20,9 +23,12 @@ export class User {
   // user email address
   @Prop({
     required: [true, MSG.isRequired('Email')],
-    unique: [true, MSG.alreadyInUse('Email')],
-    validate: [validateEmail, MSG.invalid_email],
-    match: [EMAIL_REGEXP, MSG.invalid_email],
+    index: {
+      unique: true,
+      partialFilterExpression: { isActive: true },
+    },
+    validate: [validateEmail, MSG.invalid('Email')],
+    match: [EMAIL_REGEXP, MSG.invalid('Email')],
     trim: true,
     lowercase: true,
   })
@@ -31,7 +37,10 @@ export class User {
   // user phone number
   @Prop({
     required: [true, MSG.isRequired('Phone number')],
-    unique: [true, MSG.alreadyInUse('Phone number')],
+    index: {
+      unique: true,
+      partialFilterExpression: { isActive: true },
+    },
     trim: true,
   })
   phone: string;
@@ -66,16 +75,9 @@ export class User {
   @Prop({ default: false })
   phoneVerified?: boolean;
 
-  // user account status
-  @Prop({
-    enum: {
-      values: Object.values(UserStatuses),
-      message: 'Invalid user status',
-    },
-    default: UserStatuses.ACTIVE,
-    trim: true,
-  })
-  status?: string;
+  // is user active
+  @Prop({ default: true })
+  isActive?: boolean;
 }
 
 export type UserDocument = HydratedDocument<User>;

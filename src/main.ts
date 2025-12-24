@@ -16,10 +16,11 @@ import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication, ExpressAdapter } from '@nestjs/platform-express';
 import { NestFactory } from '@nestjs/core';
+import * as bodyParser from 'body-parser';
 
 import { AppModule } from './app.module';
 import { CustomLoggerService } from './core/logger/logger.service';
-import { AllExceptionsFilter } from './common/filters/exceptionFilters';
+import { AllExceptionsFilter } from './common/filters/exception_filter';
 
 async function bootstrap() {
   const {
@@ -45,11 +46,15 @@ async function bootstrap() {
   // Optional: Initialize the Nest application modules
   await app.init();
 
+  app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+  app.use(bodyParser.json({ limit: '10mb' }));
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
       // other strict options
+      transform: true, // Automatically transforms payload objects to DTO instances
     }),
   );
   app.useGlobalFilters(new AllExceptionsFilter());

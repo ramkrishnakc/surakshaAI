@@ -4,6 +4,9 @@ import * as fs from 'node:fs';
 import { Injectable, LoggerService } from '@nestjs/common';
 import { createLogger, format, transports, Logger } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
+import { LOG_CTXT } from 'src/common/constants';
+
+const ctxt = LOG_CTXT.APP;
 
 @Injectable()
 export class CustomLoggerService implements LoggerService {
@@ -59,23 +62,23 @@ export class CustomLoggerService implements LoggerService {
     });
   }
 
-  log(message: string, context?: string) {
+  log(message: string, context: string = ctxt) {
     this.logger.info(message, { context });
   }
 
-  error(message: string, err?: Error, context?: string) {
+  error(message: string, err?: Error, context: string = ctxt) {
     this.logger.error(message, { stack: err?.stack, context });
   }
 
-  warn(message: string, context?: string) {
+  warn(message: string, context: string = ctxt) {
     this.logger.warn(message, { context });
   }
 
-  debug(message: string, context?: string) {
+  debug(message: string, context: string = ctxt) {
     this.logger.debug(message, { context });
   }
 
-  verbose(message: string, context?: string) {
+  verbose(message: string, context: string = ctxt) {
     this.logger.verbose(message, { context });
   }
 }
