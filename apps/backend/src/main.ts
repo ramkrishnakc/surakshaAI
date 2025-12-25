@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import { DeploymentEnvironments } from './common/constants/enums';
 
 // Load environment variables as per the environment
-if (process.env.NODE_ENV === DeploymentEnvironments.PRODUCTION) {
+if ((process.env.NODE_ENV as unknown as DeploymentEnvironments) === DeploymentEnvironments.PROD) {
   dotenv.config();
 } else {
   dotenv.config({ path: '.env.local' });

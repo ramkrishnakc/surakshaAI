@@ -3,7 +3,7 @@ import { CustomLoggerService } from './core/logger/logger.service';
 
 @Injectable()
 export class AppService {
-  private readonly logger = new CustomLoggerService();
+  constructor(private readonly logger: CustomLoggerService) {}
 
   getHello(): string {
     this.logger.error('Request received error', undefined, 'AppController');

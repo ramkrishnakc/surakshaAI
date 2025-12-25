@@ -93,9 +93,8 @@ export enum AuditLogStatuses {
 }
 
 export enum DeploymentEnvironments {
-  DEVELOPMENT = 'development',
-  STAGING = 'staging',
-  PRODUCTION = 'production',
+  DEV = 'development',
+  PROD = 'production',
 }
 
 export enum LogLevels {
